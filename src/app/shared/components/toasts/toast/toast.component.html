@@ -1,0 +1,17 @@
+<div
+  class="toast toast-{{ toast.type }}"
+  #elementtoast
+  id="toast"
+  [style.bottom.px]="height"
+>
+  <div class="icon-content">
+    <div class="back-circle toast-icon"></div>
+  </div>
+  <div class="message-content">
+    <div class="content-toast">
+      <h4 class="toast-heading">{{ toast.title }}</h4>
+      <p>{{ toast.body }}</p>
+    </div>
+    <a class="close" (click)="remove.emit(i)">&times;</a>
+  </div>
+</div>

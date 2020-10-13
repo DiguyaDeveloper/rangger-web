@@ -1,0 +1,36 @@
+$black-color: #222;
+$orange-color: #ff6801;
+$grey-light: #999;
+$border-color: #ebebeb;
+
+#submit {
+  background: $orange-color;
+  color: #fff;
+  &:hover {
+    background-color: darken($orange-color, 10%);
+  }
+}
+
+.submit {
+  width: 140px;
+  height: 40px;
+  display: inline-block;
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 13px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-lg {
+  width: 250px;
+  height: 40px;
+  display: inline-block;
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 13px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}

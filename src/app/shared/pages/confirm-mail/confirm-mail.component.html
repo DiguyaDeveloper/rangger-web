@@ -1,0 +1,27 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <div class="text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <label> Código de verificação <span class="asterisk"></span> </label>
+          <code-input
+            [isCodeHidden]="false"
+            [isNonDigitsCode]="false"
+            [codeLength]="6"
+            (codeChanged)="onCodeChanged($event)"
+            (codeCompleted)="onCodeCompleted($event)"
+          >
+          </code-input>
+          <div *ngIf="submitted && isInvalid" class="invalid-feedback-2">
+            <div *ngIf="isInvalid">Preencha os campos obrigatórios</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <div class="form-submit">
+      <button type="submit" class="submit" id="submit">CONFIRMAR EMAIL</button>
+    </div>
+  </div>
+</form>

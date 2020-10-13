@@ -1,0 +1,43 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="col-md-12">
+    <div class="form-group">
+      <label> E-mail <span class="asterisk"></span> </label>
+      <input
+        class="form-control"
+        type="text"
+        name="email"
+        formControlName="email"
+        [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+      />
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Campo obrigatório</div>
+        <div *ngIf="f.email.errors.email">
+          O email deve ser um endereço de email válido
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group">
+      <label> Senha <span class="asterisk"></span> </label>
+      <input
+        class="form-control"
+        type="password"
+        name="password"
+        formControlName="password"
+        [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+      />
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Campo obrigatório</div>
+        <div *ngIf="f.password.errors.minlength">
+          A senha deve ter pelo menos 6 caracteres
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <div class="form-submit">
+      <button type="submit" class="submit" id="submit">LOGIN</button>
+    </div>
+  </div>
+</form>
