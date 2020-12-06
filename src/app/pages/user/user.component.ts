@@ -30,7 +30,7 @@ export class UserComponent implements OnInit {
     private userService: UsuarioService,
     private accountService: AccountService,
     private sessionStorageService: SessionStorageService
-  ) {}
+  ) { }
 
   get f(): any {
     return this.form.controls;
@@ -112,11 +112,10 @@ export class UserComponent implements OnInit {
     }
 
     const body: UsuarioInfo = {
-      fullname: this.f.fullname.value,
-      username: this.f.username.value,
+      name: this.f.name.value,
+      lastname: this.f.lastname.value,
       email: this.f.email.value,
-      state: this.f.state.value,
-      country: this.f.country.value,
+      document: this.f.document.value,
     };
 
     const file = this.fileToUpload;

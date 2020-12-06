@@ -9,6 +9,13 @@ import { SharedModule } from './../../shared/shared.module';
 import { LoginFormComponent } from './../../pages/login/login-form/login-form.component';
 import { RegisterFormComponent } from './../../pages/register/register-form/register-form.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IConfig, NgxMaskModule } from 'ngx-mask';
+
+const maskConfigFunction: () => Partial<IConfig> = () => {
+  return {
+    validation: false,
+  };
+};
 
 @NgModule({
   imports: [
@@ -17,7 +24,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     SharedModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgxMaskModule.forRoot(maskConfigFunction),
   ],
   declarations: [LoginComponent, RegisterComponent, LoginFormComponent, RegisterFormComponent],
 })

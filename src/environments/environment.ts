@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlServer: 'http://127.0.0.1:3333/',
+  urlServer: 'http://localhost:8080/rangger/',
 };
 
 /*

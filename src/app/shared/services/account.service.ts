@@ -26,7 +26,7 @@ export class AccountService {
     private httpClient: HttpClient,
     private route: Router,
     private sessionStorageService: SessionStorageService
-  ) {}
+  ) { }
 
   handleError(error: HttpErrorResponse): any {
     let errorMessage = 'Unknown error!';
@@ -70,28 +70,26 @@ export class AccountService {
     const data = new FormData();
 
     const body: NewUser = {
-      fullname: newUser.fullname,
-      username: newUser.username,
+      name: newUser.name,
+      lastname: newUser.lastname,
       email: newUser.email,
       password: newUser.password,
-      state: newUser.state,
-      country: newUser.country,
-      help: newUser.help,
       acceptTerm: newUser.acceptTerm,
+      document: newUser.document.replace('.', '').replace('-', '')
     };
 
-    data.append('fullname', body.fullname);
-    data.append('username', body.username);
+    console.log(body)
+
+    data.append('name', body.name);
+    data.append('lastname', body.lastname);
     data.append('email', body.email);
     data.append('password', body.password);
-    data.append('state', body.state);
-    data.append('country', body.country);
-    data.append('help', body.help);
-    data.append('acceptTerm', body.acceptTerm);
-    data.append('picture', file);
+    data.append('termsAndConditions', body.acceptTerm);
+    data.append('document', body.document);
+    data.append('file', file);
 
     return this.httpClient
-      .post<RegisterResponse>(this.REST_API_SERVER + 'users/v2', data)
+      .post<RegisterResponse>(this.REST_API_SERVER + 'usuarios', data)
       .pipe(
         tap((resData: RegisterResponse) => {
           if (resData.userStatus === 1) {
@@ -138,8 +136,8 @@ export class AccountService {
     const user = new Usuario(
       id,
       usuario.email,
-      usuario.username,
-      usuario.fullname,
+      usuario.name,
+      usuario.lastname,
       null,
       null
     );

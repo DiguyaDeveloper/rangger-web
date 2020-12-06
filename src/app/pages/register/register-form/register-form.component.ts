@@ -15,7 +15,9 @@ import { NewUser } from './../../../shared/models/new-user';
 import { ToasterService } from './../../../shared/components/toasts/toast/toast.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEyeSlash, faEye, faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { UsuarioInfo } from './../../../shared/models/UserInfo';
+import { MascaraUtil } from './../../../shared/masks/mask.util';
 
 @Component({
   selector: 'app-register-form',
@@ -32,6 +34,9 @@ export class RegisterFormComponent implements OnInit, OnDestroy {
   fieldTextType = false;
   faEyeSlash = faEyeSlash;
   faEye = faEye;
+  faAddressCard = faAddressCard;
+  usuario = new UsuarioInfo();
+  mascaraCpf = MascaraUtil.mascaraCpf;
 
   constructor(
     private fb: FormBuilder,
@@ -59,10 +64,11 @@ export class RegisterFormComponent implements OnInit, OnDestroy {
         name: ['', Validators.required],
         lastname: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')]],
+        password: ['', [Validators.required, Validators.minLength(8)]],
         confirmPassword: ['', Validators.required],
         picture: ['', Validators.required],
         acceptTerm: [false, Validators.requiredTrue],
+        document: ['', Validators.required]
       },
       {
         validator: MustMatch('password', 'confirmPassword'),
@@ -100,8 +106,9 @@ export class RegisterFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    console.log(this.form.controls.acceptTerm)
     this.submitted = true;
+
+    console.log(this.form)
 
     if (this.form.invalid) {
       // this.toaster.show(
@@ -114,14 +121,12 @@ export class RegisterFormComponent implements OnInit, OnDestroy {
     }
 
     const body: NewUser = {
-      fullname: this.f.fullname.value,
-      username: this.f.username.value,
+      name: this.f.name.value,
+      lastname: this.f.lastname.value,
       email: this.f.email.value,
       password: this.f.password.value,
-      state: this.f.state.value,
-      country: this.f.country.value,
-      help: this.f.help.value === 0 ? 'true' : 'false',
-      acceptTerm: this.f.acceptTerm.value ? 'true' : 'false',
+      acceptTerm: this.f.acceptTerm.value ? '1' : '0',
+      document: this.f.document.value
     };
 
     const file = this.fileToUpload;

@@ -1,10 +1,8 @@
 export class NewUser {
-  fullname: string;
-  username: string;
+  name: string;
+  lastname: string;
   email: string;
   password: string;
-  state: string;
-  country: string;
-  help: string;
   acceptTerm: string;
+  document: string;
 }

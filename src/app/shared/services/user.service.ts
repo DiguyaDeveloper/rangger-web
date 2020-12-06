@@ -26,7 +26,7 @@ export class UsuarioService {
     private httpClient: HttpClient,
     private route: Router,
     private sessionStorageService: SessionStorageService
-  ) {}
+  ) { }
 
   handleError(error: HttpErrorResponse): any {
     let errorMessage = 'Unknown error!';
@@ -44,18 +44,16 @@ export class UsuarioService {
     const data = new FormData();
 
     const body: UsuarioInfo = {
-      fullname: newUser.fullname,
-      username: newUser.username,
+      name: newUser.name,
+      lastname: newUser.lastname,
       email: newUser.email,
-      state: newUser.state,
-      country: newUser.country,
+      document: newUser.document,
     };
 
-    data.append('fullname', body.fullname);
-    data.append('username', body.username);
+    data.append('name', body.name);
+    data.append('lastname', body.lastname);
     data.append('email', body.email);
-    data.append('state', body.state);
-    data.append('country', body.country);
+    data.append('document', body.document);
     data.append('picture', file);
 
     return this.httpClient

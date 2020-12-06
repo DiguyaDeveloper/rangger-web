@@ -30,7 +30,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     private toaster: ToasterService,
     private router: Router,
     private accountService: AccountService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.ngCreateForm();
@@ -43,10 +43,10 @@ export class LoginFormComponent implements OnInit, OnDestroy {
   ngCreateForm(): void {
     this.form = this.fb.group({
       email: [
-        'diegoceccon1544@gmail.com',
+        '',
         [Validators.required, Validators.email],
       ],
-      password: ['123456', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 

@@ -1,7 +1,6 @@
 export class UsuarioInfo {
-  fullname: string;
-  username: string;
+  name: string;
+  lastname: string;
   email: string;
-  state: string;
-  country: string;
+  document: string;
 }
