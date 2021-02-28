@@ -3,23 +3,23 @@ export class Usuario {
    *
    * @param email: string
    * @param name: string
-   * @param sobrenome: string
-   * @param _token: string
-   * @param _tokenExpirationDate: string
+   * @param lastName: string
+   * @param token: string
+   * @param tokenExpirationDate: string
    */
   constructor(
     public id: string,
     public email: string,
     public name: string,
-    public sobrenome: string,
-    private _token: string,
-    private _tokenExpirationDate
+    public lastName: string,
+    private token: string,
+    private tokenExpirationDate
   ) {}
 
-  get token(): string {
-    if (!this._tokenExpirationDate || new Date() > this._tokenExpirationDate) {
+  get stoken(): string {
+    if (!this.tokenExpirationDate || new Date() > this.tokenExpirationDate) {
       return null;
     }
-    return this._token;
+    return this.token;
   }
 }

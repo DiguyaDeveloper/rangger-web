@@ -1,6 +1,6 @@
 export class NewUser {
   name: string;
-  lastname: string;
+  lastName: string;
   email: string;
   password: string;
   acceptTerm: string;

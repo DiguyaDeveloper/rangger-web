@@ -1,4 +1,4 @@
-# ExempleSidebar
+# ExempleSidebar - With Authenticate Storage
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.3.
 
@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive│pipe│service│class│guard│interface│enum│module`.
 
 ## Build
 
@@ -25,6 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
 # angular-sidebar-bootstrap
 
 ## Terminal Commands
@@ -32,12 +33,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 1. Install NodeJs from [NodeJs Official Page](https://nodejs.org/en).
 2. Open Terminal
 3. Go to your file project
-4. Run in terminal: ```npm install -g @angular/cli```
-5. Then: ```npm install```
-6. And: ```ng serve```
+4. Run in terminal: `npm install -g @angular/cli`
+5. Then: `npm install`
+6. And: `ng serve`
 7. Navigate to: [http://localhost:4200/](http://localhost:4200/)
-
-
 
 ### What's included
 
@@ -46,7 +45,6 @@ Within the download you'll find the following directories and files:
 ```
 ├── README.md
 ├── angular.json
-├── e2e
 ├── karma.conf.js
 ├── package.json
 ├── protractor.conf.js
@@ -58,35 +56,47 @@ Within the download you'll find the following directories and files:
 │   │   ├── app.component.ts
 │   │   ├── app.module.ts
 │   │   ├── app.routing.ts
-│   │   ├── layouts
-│   │   │   └── admin-layout
-│   │   │       ├── admin.component.html
-│   │   │       ├── admin.component.scss
-│   │   │       ├── admin.component.spec.ts
-│   │   │       ├── admin.component.ts
-│   │   │       ├── admin.module.ts
-│   │   │       └── admin.routing.ts
-│   │   ├── pages
-│   │   │   ├── upgrade
-│   │   │   │   ├── user.component.html
-│   │   │   │   └── user.component.ts
-│   │   │   └── user
-│   │   │       ├── user.component.html
-│   │   │       └── user.component.ts
-│   │   ├── shared
-│   │   │   ├── sidebar
-│   │   │   │   ├── sidebar.component.html
-│   │   │   │   ├── sidebar.component.ts
-│   │   │   │   └── sidebar.module.ts
-│   │   │   ├── footer
-│   │   │   │   ├── footer.component.html
-│   │   │   │   ├── footer.component.ts
-│   │   │   │   └── footer.module.ts
-│   │   │   └── navbar
-│   │   │       ├── navbar.component.html
-│   │   │       ├── navbar.component.ts
-│   │   │       └── navbar.module.ts
-│   │   └── 
+│   │   ├── modules
+│   │   │   │── admin
+│   │   │   │    │── admin.component.html
+│   │   │   │    ├── admin.component.scss
+│   │   │   │    ├── admin.component.spec.ts
+│   │   │   │    ├── admin.component.ts
+│   │   │   │    ├── admin.module.ts
+│   │   │   │    └── admin.routing.ts
+│   │   │   │         │─ pages
+│   │   │   │         │  └─ user
+│   │   │   │         │    │─ user.components.ts
+│   │   │   │         │    │─ user.components.spec.ts
+│   │   │   │         │    │─ user.components.html
+│   │   │   │         │    └─ user.components.scss
+│   │   │   │         └─ services
+│   │   │   │           │─ user.service.ts
+│   │   │   │           └─ user.service.spec.ts
+│   │   │   │── auth
+│   │   │   │   │── auth.component.html
+│   │   │   │   ├── auth.component.scss
+│   │   │   │   ├── auth.component.spec.ts
+│   │   │   │   ├── auth.component.ts
+│   │   │   │   ├── auth.module.ts
+│   │   │   │   └── auth.routing.ts
+│   │   │   │        └─ components
+│   │   │   │          │─ confirm-mail
+│   │   │   │          │    │─ confirm-mail.components.ts
+│   │   │   │          │    │─ confirm-mail.components.spec.ts
+│   │   │   │          │    │─ confirm-mail.components.html
+│   │   │   │          │    └─ confirm-mail.components.scss
+│   │   │   │          └─ recovery-password
+│   │   │   │               │─ recovery-password.components.ts
+│   │   │   │               │─ recovery-password.components.spec.ts
+│   │   │   │               │─ recovery-password.components.html
+│   │   │   │               └─ recovery-password.components.scss
+│   │   │   └── not-found
+│   │   │       │── not-found.component.html
+│   │   │       ├── not-found.component.scss
+│   │   │       ├── not-found.component.spec.ts
+│   │   │       ├── not-found.component.ts
+
 │   ├── assets
 │   │   ├── css
 │   ├── environments
@@ -107,4 +117,5 @@ Within the download you'll find the following directories and files:
 
 ### Licensing
 
-- Copyright 2020 Diego Ceccon (https://www.linkedin.com/in/diego-ceccon/)# angular-shawime-v1
+- Copyright 2021 Diego Ceccon (https://www.linkedin.com/in/diego-ceccon/)# angular-exemple-auth-guard
+```

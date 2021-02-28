@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { AdminComponent } from './layouts/admin/admin.component';
-import { AuthComponent } from './layouts/auth/auth.component';
 import { PathResolveService } from './shared/services/path-resolve.service';
-import { NotFoundComponent } from './layouts/not-found/not-found.component';
 import { AdminGuard } from './shared/helpers/guard/admin.guard';
+import { AdminComponent } from './modules/admin/admin.component';
+import { AuthComponent } from './modules/auth/auth.component';
+import { NotFoundComponent } from './modules/not-found/not-found.component';
 
 export const AppRoutes: Routes = [
   {
@@ -19,7 +19,7 @@ export const AppRoutes: Routes = [
         canActivate: [AdminGuard],
         path: '',
         loadChildren: () =>
-          import('./layouts/admin/admin.module').then((m) => m.AdminModule),
+          import('./modules/admin/admin.module').then((m) => m.AdminModule),
       },
     ],
   },
@@ -30,7 +30,7 @@ export const AppRoutes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('./layouts/auth/auth.module').then((m) => m.AuthModule),
+          import('./modules/auth/auth.module').then((m) => m.AuthModule),
       },
     ],
   },

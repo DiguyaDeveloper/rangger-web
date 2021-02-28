@@ -1,11 +1,19 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { PasswordStrengthMeterService } from './password-strength-meter.service';
 
 @Component({
   selector: 'app-password-strength-meter',
   templateUrl: './password-strength-meter.component.html',
   styleUrls: ['./password-strength-meter.component.scss'],
-  providers: [PasswordStrengthMeterService]
+  providers: [PasswordStrengthMeterService],
 })
 export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
   @Input() password: string;
@@ -29,14 +37,14 @@ export class PasswordStrengthMeterComponent implements OnInit, OnChanges {
     'orangered',
     'orange',
     'yellowgreen',
-    'green'
+    'green',
   ];
 
   constructor(
     private passwordStrengthMeterService: PasswordStrengthMeterService
-  ) { }
+  ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.password) {

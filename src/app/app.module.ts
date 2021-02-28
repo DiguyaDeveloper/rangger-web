@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { AdminComponent } from './layouts/admin/admin.component';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app-routing.module';
-import { AuthComponent } from './layouts/auth/auth.component';
 import { CodeInputModule } from 'angular-code-input';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NotFoundComponent } from './layouts/not-found/not-found.component';
 import { AuthInterceptorService } from './shared/helpers/auth/auth.interceptor';
 import { JwtInterceptor } from './shared/helpers/auth/jwt.interceptor';
 import { ErrorInterceptor } from './shared/helpers/auth/error.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AdminComponent } from './modules/admin/admin.component';
+import { AuthComponent } from './modules/auth/auth.component';
+import { NotFoundComponent } from './modules/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SharedModule,
     CodeInputModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [
     {
@@ -44,4 +44,4 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

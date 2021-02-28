@@ -1,0 +1,52 @@
+<div class="row justify-content-center mb-4">
+  <div class="col-md-12">
+    <div [ngSwitch]="showView">
+      <div *ngSwitchCase="'register'">
+        <div class="card-body">
+          <app-register-form (showView)="showView = $event"></app-register-form>
+        </div>
+      </div>
+      <div *ngSwitchCase="'recoverypassword'">
+        <div class="card-body">
+          <app-recovery-password></app-recovery-password>
+        </div>
+      </div>
+      <div *ngSwitchCase="'emailconfirmation'">
+        <div class="card-body">
+          <app-confirm-mail></app-confirm-mail>
+        </div>
+      </div>
+      <div *ngSwitchDefault>
+        <div class="card-body">{{ showView }}</div>
+      </div>
+    </div>
+    <ng-container *ngIf="showView !== 'recoverypassword'; else elseTemplate">
+      <div class="mt-3 row">
+        <div class="col-6">
+          <a class="" (click)="ngShowView('recoverypassword')">
+            <small class="button-link">Esqueceu sua senha?</small>
+          </a>
+        </div>
+        <div class="col-6 text-right">
+          <a class="" (click)="ngNavigateToLogin()">
+            <small class="button-link">Fazer login</small>
+          </a>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div class="mt-3 row">
+        <div class="col-6">
+          <a class="" (click)="ngShowView('register')">
+            <small class="button-link">Criar nova conta</small>
+          </a>
+        </div>
+        <div class="col-6 text-right">
+          <a class="" (click)="ngNavigateToLogin()">
+            <small class="button-link">Fazer login</small>
+          </a>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

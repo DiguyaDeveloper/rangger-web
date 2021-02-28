@@ -1,0 +1,40 @@
+<div class="sidebar-wrapper">
+  <div class="logo">
+    <a
+      href="https://www.linkedin.com/in/diego-ceccon/"
+      class="simple-text logo-mini"
+    >
+      <div class="logo-image-small">
+        <img src="assets/img/angular2-logo.png" />
+      </div>
+    </a>
+    <a
+      href="https://www.linkedin.com/in/diego-ceccon/"
+      class="simple-text logo-normal"
+    >
+      Olá {{ user && user.name ? user.name : 'amiguinho' }}
+    </a>
+  </div>
+  <ul class="nav" *ngIf="user">
+    <li
+
+      *ngFor="let menuItem of menuItems"
+      routerLinkActive="active"
+      class="{{ menuItem.class }}"
+    >
+      <a [routerLink]="[menuItem.path]">
+        <i class="nc-icon {{ menuItem.icon }}"></i>
+        <p>{{ menuItem.title }}</p>
+      </a>
+    </li>
+
+  </ul>
+  <ul class="nav">
+    <li routerLinkActive="active">
+      <a (click)="ngLoggout()">
+        <i class="nc-icon nc-bank"></i>
+        <p>Loggout</p>
+      </a>
+    </li>
+  </ul>
+</div>

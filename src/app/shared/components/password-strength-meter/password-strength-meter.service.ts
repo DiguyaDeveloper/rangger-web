@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 
-
 @Injectable()
 export class PasswordStrengthMeterService {
-  constructor() { }
+  constructor() {}
 
   /**
    *  this will return the password strength score in number
@@ -55,19 +54,18 @@ export class PasswordStrengthMeterService {
     }
 
     // 5
-    force += 2 * p.length + ((p.length >= 8) ? 1 : 0);
+    force += 2 * p.length + (p.length >= 8 ? 1 : 0);
     force += passedMatches * 10;
 
     // 6
-    force = (p.length <= 6) ? Math.min(force, 10) : force;
+    force = p.length <= 6 ? Math.min(force, 10) : force;
 
     // 7
-    force = (passedMatches === 1) ? Math.min(force, 1) : force;
-    force = (passedMatches === 2) ? Math.min(force, 2) : force;
-    force = (passedMatches === 3) ? Math.min(force, 3) : force;
-    force = (passedMatches === 4) ? Math.min(force, 4) : force;
+    force = passedMatches === 1 ? Math.min(force, 1) : force;
+    force = passedMatches === 2 ? Math.min(force, 2) : force;
+    force = passedMatches === 3 ? Math.min(force, 3) : force;
+    force = passedMatches === 4 ? Math.min(force, 4) : force;
 
     return force;
   }
 }
-

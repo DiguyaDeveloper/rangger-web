@@ -26,7 +26,7 @@ export class AccountService {
     private httpClient: HttpClient,
     private route: Router,
     private sessionStorageService: SessionStorageService
-  ) { }
+  ) {}
 
   handleError(error: HttpErrorResponse): any {
     let errorMessage = 'Unknown error!';
@@ -44,14 +44,13 @@ export class AccountService {
     const body = { email, password };
 
     return this.httpClient
-      .post<AuthResponse>(this.REST_API_SERVER + 'users/authenticate', body)
+      .post<AuthResponse>(this.REST_API_SERVER + 'authenticate/login', body)
       .pipe(
         catchError(this.handleError),
         tap((resData: AuthResponse) => {
-          console.log('resData', resData);
           this.handleAuthentication(
             resData.id,
-            resData.idToken,
+            resData.accessToken,
             +resData.expiresIn,
             resData.user
           );
@@ -71,22 +70,20 @@ export class AccountService {
 
     const body: NewUser = {
       name: newUser.name,
-      lastname: newUser.lastname,
+      lastName: newUser.lastName,
       email: newUser.email,
       password: newUser.password,
       acceptTerm: newUser.acceptTerm,
-      document: newUser.document.replace('.', '').replace('-', '')
+      document: newUser.document.replace('.', '').replace('-', ''),
     };
 
-    console.log(body)
-
     data.append('name', body.name);
-    data.append('lastname', body.lastname);
+    data.append('lastName', body.lastName);
     data.append('email', body.email);
     data.append('password', body.password);
     data.append('termsAndConditions', body.acceptTerm);
     data.append('document', body.document);
-    data.append('file', file);
+    // data.append('file', file);
 
     return this.httpClient
       .post<RegisterResponse>(this.REST_API_SERVER + 'usuarios', data)
@@ -119,7 +116,7 @@ export class AccountService {
       userId,
       usuario.email,
       usuario.name,
-      usuario.sobrenome,
+      usuario.lastName,
       token,
       expirationDate
     );
@@ -132,12 +129,12 @@ export class AccountService {
     this.route.navigateByUrl('/admin/user');
   }
 
-  private handleRegister(id: string, usuario: UsuarioInfo): void {
+  private handleRegister(id: string, usuario: Usuario): void {
     const user = new Usuario(
       id,
       usuario.email,
       usuario.name,
-      usuario.lastname,
+      usuario.lastName,
       null,
       null
     );

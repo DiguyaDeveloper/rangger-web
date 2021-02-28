@@ -1,6 +1,6 @@
 export class UsuarioInfo {
   name: string;
-  lastname: string;
+  lastName: string;
   email: string;
   document: string;
 }

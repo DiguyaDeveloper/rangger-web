@@ -8,10 +8,14 @@ import {
   HttpParams,
 } from '@angular/common/http';
 import { exhaustMap, take } from 'rxjs/operators';
+import { SessionStorageService } from './../../../shared/services/session.service';
 
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
-  constructor(private authService: AccountService) {}
+  constructor(
+    private authService: AccountService,
+    private sessionStorageService: SessionStorageService
+  ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): any {
     return this.authService.subjUser$.pipe(
@@ -21,7 +25,10 @@ export class AuthInterceptorService implements HttpInterceptor {
           return next.handle(req);
         }
         const modifeReq = req.clone({
-          params: new HttpParams().set('auth', user.token),
+          params: new HttpParams().set(
+            'auth',
+            user.stoken || this.sessionStorageService.getToken()
+          ),
         });
         return next.handle(modifeReq);
       })

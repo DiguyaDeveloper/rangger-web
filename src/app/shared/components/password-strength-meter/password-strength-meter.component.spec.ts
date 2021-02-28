@@ -11,14 +11,12 @@ describe('PasswordStrengthMeterComponent', () => {
   let fixture: ComponentFixture<PasswordStrengthMeterComponent>;
   let passwordStrengthMeterService: PasswordStrengthMeterService;
 
-  beforeEach(
-    (() => {
-      TestBed.configureTestingModule({
-        declarations: [PasswordStrengthMeterComponent],
-        providers: [],
-      }).compileComponents();
-    })
-  );
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [PasswordStrengthMeterComponent],
+      providers: [],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PasswordStrengthMeterComponent);

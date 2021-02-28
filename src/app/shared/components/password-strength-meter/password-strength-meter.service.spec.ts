@@ -5,13 +5,16 @@ import { PasswordStrengthMeterService } from './password-strength-meter.service'
 describe('PasswordStrengthMeterService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [PasswordStrengthMeterService]
+      providers: [PasswordStrengthMeterService],
     });
   });
 
-  it('should be created', inject([PasswordStrengthMeterService], (service: PasswordStrengthMeterService) => {
-    expect(service).toBeTruthy();
-  }));
+  it('should be created', inject(
+    [PasswordStrengthMeterService],
+    (service: PasswordStrengthMeterService) => {
+      expect(service).toBeTruthy();
+    }
+  ));
 
   it('should return a number as score', inject(
     [PasswordStrengthMeterService],

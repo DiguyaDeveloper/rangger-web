@@ -26,7 +26,7 @@ export class UsuarioService {
     private httpClient: HttpClient,
     private route: Router,
     private sessionStorageService: SessionStorageService
-  ) { }
+  ) {}
 
   handleError(error: HttpErrorResponse): any {
     let errorMessage = 'Unknown error!';
@@ -45,23 +45,25 @@ export class UsuarioService {
 
     const body: UsuarioInfo = {
       name: newUser.name,
-      lastname: newUser.lastname,
+      lastName: newUser.lastName,
       email: newUser.email,
       document: newUser.document,
     };
 
     data.append('name', body.name);
-    data.append('lastname', body.lastname);
+    data.append('lastName', body.lastName);
     data.append('email', body.email);
     data.append('document', body.document);
-    data.append('picture', file);
+    // data.append('picture', file);
 
     return this.httpClient
-      .put<RegisterResponse>(this.REST_API_SERVER + 'users', data)
+      .put<RegisterResponse>(this.REST_API_SERVER + 'usuarios', data)
       .pipe(
         tap((resData: RegisterResponse) => {
           console.log('resdataput', resData);
           if (resData.userStatus === 1) {
+            this.sessionStorageService.saveUser(resData.user);
+            this.subjUser$.next(resData.user);
           }
         }),
         catchError(this.handleError)
